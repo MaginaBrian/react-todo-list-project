@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+        const response = await axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
         setTodos(response.data)
         setLoading(false)
       } catch (err) {
