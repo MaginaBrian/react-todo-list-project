@@ -1,11 +1,13 @@
-function TodoItem({ todo, onDelete }) {
+import React from 'react';
+
+function TodoItem({ todo, onDelete, onToggle }) {
   return (
     <li className="todo-item">
       <div className="todo-content">
         <input
           type="checkbox"
           checked={todo.completed}
-          readOnly
+          onChange={() => onToggle(todo.id)}
           className="todo-checkbox"
         />
         <span className={todo.completed ? 'todo-title completed' : 'todo-title'}>
@@ -22,4 +24,4 @@ function TodoItem({ todo, onDelete }) {
   )
 }
 
-export default TodoItem
+export default TodoItem;

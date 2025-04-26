@@ -1,6 +1,6 @@
 import TodoItem from './TodoItem'
 
-function TodoList({ todos, onDelete }) {
+function TodoList({ todos, onDelete, onToggle }) {
   return (
     <ul className="todo-list">
       {todos.map(todo => (
@@ -8,10 +8,11 @@ function TodoList({ todos, onDelete }) {
           key={todo.id}
           todo={todo}
           onDelete={onDelete}
+          onToggle={onToggle}
         />
       ))}
     </ul>
   )
 }
 
-export default TodoList
+export default TodoList;

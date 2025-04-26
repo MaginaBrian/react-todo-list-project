@@ -45,6 +45,17 @@ function App() {
     }
   }
 
+  const toggleTodo = async (id) => {
+    try {
+      const todo = todos.find(t => t.id === id)
+      const updatedTodo = { ...todo, completed: !todo.completed }
+      await axios.put(`https://jsonplaceholder.typicode.com/todos/${id}`, updatedTodo)
+      setTodos(todos.map(t => t.id === id ? updatedTodo : t))
+    } catch (err) {
+      setError('Failed to update todo')
+    }
+  }
+
   return (
     <div className="app-container">
       <div className="todo-app">
@@ -52,10 +63,10 @@ function App() {
         {loading && <p className="loading">Loading...</p>}
         {error && <p className="error">{error}</p>}
         <AddTodoForm onAdd={addTodo} />
-        <TodoList todos={todos} onDelete={deleteTodo} />
+        <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
       </div>
     </div>
   )
 }
 
-export default App
+export default App;
